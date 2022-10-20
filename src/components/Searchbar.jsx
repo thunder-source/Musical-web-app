@@ -17,7 +17,7 @@ const Searchbar = () => {
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="p-2 text-gray-400 focus-within:text-gray-600"
+      className="p-2 text-gray-300 focus-within:text-gray-600  border-transparent border-2 rounded-xl "
     >
       <label htmlFor="search-field" className="sr-only">
         Search all files
@@ -28,7 +28,7 @@ const Searchbar = () => {
           name="search-field"
           autoComplete="off"
           id="search-field"
-          className="flex-1 bg-transparent border-none placeholder-gray-500 outline-none text-base text-white p-4"
+          className="flex-1 bg-transparent border-none placeholder-gray-400 outline-none text-base text-white p-4 focus-within:placeholder-gray-600 "
           placeholder="Search"
           type="search"
           value={searchTerm}

@@ -3,12 +3,19 @@
 @tailwind utilities;
 
 /* Active Navigation Link */
-.active {
+.active-Link {
   @apply text-cyan-500;
 }
 
-.active svg {
+.active-Link svg {
   @apply text-cyan-500;
+}
+.unActive-Link {
+  @apply text-gray-300;
+}
+
+body {
+  background: black;
 }
 
 .bar:nth-child(2) {
