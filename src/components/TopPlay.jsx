@@ -3,15 +3,13 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Mousewheel, Pagination, Scrollbar } from "swiper";
+import { FreeMode } from "swiper";
 
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 
 import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import "swiper/css";
 
 const TopChartCard = ({
@@ -121,32 +119,24 @@ const TopPlay = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-4 gap-1 h-96 pb-40">
-        <Swiper
-          direction={"vertical"}
-          slidesPerView={3}
-          spaceBetween={0}
-          freeMode={true}
-          mousewheel={true}
-          modules={[FreeMode, Scrollbar, Mousewheel]}
-          className="mySwiper h-80"
-        >
-          {topPlays?.map((song, i) => {
-            return (
-              <SwiperSlide key={song.key} className={i === 4 && "pb-96"}>
-                <TopChartCard
-                  key={song.key}
-                  song={song}
-                  i={i}
-                  isPlaying={isPlaying}
-                  activeSong={activeSong}
-                  handlePauseClick={handlePauseClick}
-                  handlePlayClick={() => handlePlayClick(song, i)}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+      <div
+        className={`${
+          activeSong.title && "h-80"
+        }  mt-4 gap-1 overflow-y-scroll hide-scrollbar`}
+      >
+        {topPlays?.map((song, i) => {
+          return (
+            <TopChartCard
+              key={song.key}
+              song={song}
+              i={i}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={() => handlePlayClick(song, i)}
+            />
+          );
+        })}
       </div>
     </div>
   );

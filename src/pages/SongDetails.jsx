@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
@@ -10,7 +11,7 @@ import {
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-
+  const { songid, id: artistId } = useParams();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const {

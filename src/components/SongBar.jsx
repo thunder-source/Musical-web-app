@@ -11,7 +11,7 @@ const SongBar = ({
   handlePauseClick,
   handlePlayClick,
 }) =>
-  song?.images?.coverart === undefined ? (
+  song.images?.coverart === undefined || song.hub.explicit === true ? (
     <></>
   ) : (
     <div
